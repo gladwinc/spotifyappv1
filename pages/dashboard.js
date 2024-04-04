@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import TopArtist from "@/components/TopArtist";
@@ -17,6 +17,9 @@ const Dashboard = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>dashboard</title>
+      </Head>
       <div>
         <h1
           className="text-center"

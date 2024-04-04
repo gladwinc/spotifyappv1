@@ -1,7 +1,7 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import TopArtist from "@/components/TopArtist";
-import TopTrack from "@/components/TopTrack";
+import Head from "next/head";
+
 import { getTokenFromUrl } from "@/utils/api";
 import { useRouter } from "next/router"; // Import useRouter from Next.js
 
@@ -47,6 +47,9 @@ const Login = () => {
         alignItems: "center",
         height: "100vh",
       }}>
+      <Head>
+        <title>login</title>
+      </Head>
       <Card>
         <Card.Header>
           <Image
