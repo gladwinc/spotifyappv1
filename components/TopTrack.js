@@ -37,7 +37,9 @@ const TopTrack = ({ token }) => {
         activeKey={activeTimeRange}
         onSelect={handleTabChange}
         className="mb-3">
-        <Tab eventKey="short_term" title="4 weeks">
+        <Tab
+          eventKey="short_term"
+          title={<span style={{ color: "black" }}>4 weeks</span>}>
           {data?.items ? (
             data.items.map((item, index) => (
               <div key={index} className="d-flex align-items-center mb-3">
@@ -64,7 +66,9 @@ const TopTrack = ({ token }) => {
             <p>No data</p>
           )}
         </Tab>
-        <Tab eventKey="medium_term" title="6 months">
+        <Tab
+          eventKey="medium_term"
+          title={<span style={{ color: "black" }}>6 months</span>}>
           {data?.items ? (
             data.items.map((item, index) => (
               <div key={index} className="d-flex align-items-center mb-3">
@@ -91,7 +95,9 @@ const TopTrack = ({ token }) => {
             <p>No data</p>
           )}
         </Tab>
-        <Tab eventKey="long_term" title="1 year">
+        <Tab
+          eventKey="long_term"
+          title={<span style={{ color: "black" }}>1 year</span>}>
           {data?.items ? (
             data.items.map((item, index) => (
               <div key={index} className="d-flex align-items-center mb-3">

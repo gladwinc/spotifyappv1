@@ -18,11 +18,22 @@ const Dashboard = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-center mt-5 mb-5">dashboard</h1>
+        <h1
+          className="text-center"
+          style={{ marginTop: "60px", marginBottom: "30px" }}>
+          dashboard
+        </h1>{" "}
         <Row>
           <Col>
             <Card>
-              <Card.Header>top artists</Card.Header>
+              <Card.Header
+                style={{
+                  backgroundColor: "#1DB954",
+                  borderColor: "#1DB954",
+                  color: "white",
+                }}>
+                top artists
+              </Card.Header>
               <Card.Body>
                 <TopArtist token={accessToken} />
               </Card.Body>
@@ -30,7 +41,14 @@ const Dashboard = () => {
           </Col>
           <Col>
             <Card>
-              <Card.Header>top tracks</Card.Header>
+              <Card.Header
+                style={{
+                  backgroundColor: "#1DB954",
+                  borderColor: "#1DB954",
+                  color: "white",
+                }}>
+                top tracks
+              </Card.Header>
               <Card.Body>
                 <TopTrack token={accessToken} />
               </Card.Body>
