@@ -58,7 +58,7 @@ const Login = () => {
         </Card.Header>
         <Card.Body>
           <Card.Title>
-            Discover what you've been listening to the most!
+            Discover what you&apos've been listening to the most!
           </Card.Title>
           <Card.Text>Please login to your Spotify account to start.</Card.Text>
           <Button
