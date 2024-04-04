@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 
 const About = () => {
-  return <Layout />;
+  return <> </>;
 };
 
 export default About;

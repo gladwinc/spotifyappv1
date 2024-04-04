@@ -16,7 +16,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>dashboard</title>
       </Head>
@@ -59,7 +59,7 @@ const Dashboard = () => {
           </Col>
         </Row>
       </div>
-    </Layout>
+    </>
   );
 };
 
