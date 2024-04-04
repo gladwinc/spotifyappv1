@@ -25,10 +25,10 @@ const Dashboard = () => {
           className="text-center"
           style={{ marginTop: "60px", marginBottom: "30px" }}>
           dashboard
-        </h1>{" "}
+        </h1>
         <Row>
           <Col>
-            <Card>
+            <Card style={{ marginBottom: "20px" }}>
               <Card.Header
                 style={{
                   backgroundColor: "#1DB954",
