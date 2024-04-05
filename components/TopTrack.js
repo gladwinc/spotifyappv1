@@ -60,7 +60,10 @@ const TopTracks = ({ token }) => {
               style={{ marginRight: "40px" }}
             />
           )}
-          <p className="mb-0">{item.name}</p>
+          <p className="mb-0">
+            <b>Track: </b> {item.name} <br />
+            <b>Artist: </b> {item.artists[0].name} <br />
+          </p>
         </div>
       ))
     ) : (
