@@ -28,7 +28,12 @@ const Dashboard = () => {
         </h1>
         <Row>
           <Col>
-            <Card style={{ marginBottom: "20px" }}>
+            <Card
+              style={{
+                marginBottom: "20px",
+                maxHeight: "625px",
+                overflowY: "auto",
+              }}>
               <Card.Header
                 style={{
                   backgroundColor: "#1DB954",
@@ -43,7 +48,12 @@ const Dashboard = () => {
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card
+              style={{
+                marginBottom: "20px",
+                maxHeight: "625px",
+                overflowY: "auto",
+              }}>
               <Card.Header
                 style={{
                   backgroundColor: "#1DB954",
