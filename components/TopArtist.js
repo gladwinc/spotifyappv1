@@ -90,7 +90,7 @@ const TopArtist = ({ token }) => {
           </div>
           <p className="text-secondary">
             <Link href="/login " legacyBehavior>
-              <a style={{ textDecoration: "none" }}>Login </a>
+              <a style={{ textDecoration: "none", color: "#1DB954" }}>Login </a>
             </Link>
             to view top artists.
           </p>
