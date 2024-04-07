@@ -1,10 +1,28 @@
 import { useRouter } from "next/router";
-import { Navbar, Nav, Image, Container } from "react-bootstrap";
+import { Navbar, Nav, Image, Container, Button } from "react-bootstrap";
 
 const MainNav = () => {
   const router = useRouter();
+  let isLoggedIn = false; // Initialize isLoggedIn as false by default
 
-  // Function to generate navigation links with current query parameters
+  if (typeof window !== "undefined") {
+    // Check if window is defined (client-side)
+    isLoggedIn = localStorage.getItem("accessToken") !== null;
+  }
+
+  const handleLogout = () => {
+    // Remove access token from local storage
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("accessToken");
+      // Redirect user to the login page
+      router.push("/login");
+    }
+  };
+
+  const handleLogin = () => {
+    // Redirect user to the login page
+    router.push("/login");
+  };
 
   return (
     <Navbar
@@ -12,9 +30,9 @@ const MainNav = () => {
       expand="lg"
       style={{ backgroundColor: "#1DB954" }}>
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand>
           <Image
-            src="spotify_logo.svg" // Replace "/path/to/your/image.png" with the actual path to your image
+            src="spotify_logo.svg"
             width="35"
             height="35"
             className="d-inline-block align-top"
@@ -36,6 +54,11 @@ const MainNav = () => {
               About
             </Nav.Link>
           </Nav>
+          {isLoggedIn && (
+            <Button variant="outline-light" onClick={handleLogout}>
+              Logout
+            </Button>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

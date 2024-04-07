@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Tab, Tabs, Image, Toast } from "react-bootstrap";
-import { ArrowDownCircleFill, Copy } from "react-bootstrap-icons";
+import {
+  ArrowDownCircleFill,
+  Copy,
+  PatchQuestionFill,
+} from "react-bootstrap-icons";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const TOP_ARTISTS_ENDPOINT = "https://api.spotify.com/v1/me/top/artists";
 
 const TopArtist = ({ token }) => {
+  const router = useRouter();
   const [data, setData] = useState([]);
   const [activeTimeRange, setActiveTimeRange] = useState("short_term");
   const [offset, setOffset] = useState(0);
@@ -13,8 +20,10 @@ const TopArtist = ({ token }) => {
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    fetchTopArtists();
-  }, [token, activeTimeRange, offset]); // Fetch data when token, activeTimeRange or offset changes
+    if (token) {
+      fetchTopArtists();
+    }
+  }, [token, activeTimeRange, offset]); // Fetch data when token, activeTimeRange, or offset changes
 
   const fetchTopArtists = async () => {
     try {
@@ -63,8 +72,33 @@ const TopArtist = ({ token }) => {
   };
 
   const renderItems = () => {
-    return data?.items ? (
-      data.items.map((item, index) => (
+    if (!token) {
+      // If user is not logged in, render login icons
+      return (
+        <>
+          <div className="d-flex align-items-center mb-3">
+            <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
+            <p className="mb-0 text-muted">Artist unavailable.</p>
+          </div>
+          <div className="d-flex align-items-center mb-3">
+            <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
+            <p className="mb-0 text-muted">Artist unavailable.</p>
+          </div>
+          <div className="d-flex align-items-center mb-3">
+            <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
+            <p className="mb-0 text-muted">Artist unavailable.</p>
+          </div>
+          <p className="text-secondary">
+            <Link href="/login" legacyBehavior>
+              <a>Login </a>
+            </Link>
+            to view top artists.
+          </p>
+        </>
+      );
+    } else if (data?.items) {
+      // If user is logged in and data is available, render top artists' items
+      return data.items.map((item, index) => (
         <div key={index} className="d-flex align-items-center mb-3">
           {item.images.length > 0 && (
             <Image
@@ -78,10 +112,11 @@ const TopArtist = ({ token }) => {
           )}
           <p className="mb-0">{item.name}</p>
         </div>
-      ))
-    ) : (
-      <p>No data</p>
-    );
+      ));
+    } else {
+      // If user is logged in but no data is available, show a message
+      return <p>No data</p>;
+    }
   };
 
   return (

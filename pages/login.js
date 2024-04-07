@@ -7,8 +7,8 @@ import { useRouter } from "next/router"; // Import useRouter from Next.js
 
 const CLIENT_ID = "f93eafeebc55462282df6aae7a883874";
 const AUTHORIZE_URL = "https://accounts.spotify.com/authorize";
-const REDIRECT_URI = "https://main--spotifyappv1.netlify.app/login/";
-//const REDIRECT_URI = "http://localhost:3000/login/";
+//const REDIRECT_URI = "https://main--spotifyappv1.netlify.app/login/";
+const REDIRECT_URI = "http://localhost:3000/login/";
 const SCOPES = ["user-top-read"];
 
 const Login = () => {
@@ -61,10 +61,8 @@ const Login = () => {
           />
         </Card.Header>
         <Card.Body>
-          <Card.Title>
-            Discover what you have been listening to the most!
-          </Card.Title>
-          <Card.Text>Please login to your Spotify account to start.</Card.Text>
+          <Card.Title>Explore your top tracks and artists!</Card.Title>
+          <Card.Text>Please login to your Spotify account to begin.</Card.Text>
           <Button
             variant="primary"
             onClick={handleLogin}
