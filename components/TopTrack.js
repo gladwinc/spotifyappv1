@@ -80,15 +80,15 @@ const TopTrack = ({ token }) => {
         <>
           <div className="d-flex align-items-center mb-3">
             <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
-            <p className="mb-0 text-muted">Track unavailable.</p>
+            <p className="mb-0">Track unavailable.</p>
           </div>
           <div className="d-flex align-items-center mb-3">
             <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
-            <p className="mb-0 text-muted">Track unavailable.</p>
+            <p className="mb-0">Track unavailable.</p>
           </div>
           <div className="d-flex align-items-center mb-3">
             <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
-            <p className="mb-0 text-muted">Track unavailable.</p>
+            <p className="mb-0">Track unavailable.</p>
           </div>
           <p className="text-secondary">
             <Link href="/login" legacyBehavior>
@@ -112,7 +112,7 @@ const TopTrack = ({ token }) => {
               style={{ marginRight: "40px" }}
             />
           )}
-          <p className="mb-0">
+          <p className="mb-0 " style={{ color: "#212529" }}>
             <b>Track: </b> {item.name} <br />
             <b>Artist: </b> {item.artists[0].name} <br />
           </p>
@@ -134,7 +134,7 @@ const TopTrack = ({ token }) => {
           className="mb-3">
           <Tab
             eventKey="short_term"
-            title={<span style={{ color: "black" }}>4 weeks</span>}>
+            title={<span style={{ color: "#484848" }}>4 weeks</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
@@ -153,7 +153,7 @@ const TopTrack = ({ token }) => {
           </Tab>
           <Tab
             eventKey="medium_term"
-            title={<span style={{ color: "black" }}>6 months</span>}>
+            title={<span style={{ color: "#484848" }}>6 months</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
@@ -172,7 +172,7 @@ const TopTrack = ({ token }) => {
           </Tab>
           <Tab
             eventKey="long_term"
-            title={<span style={{ color: "black" }}>1 year</span>}>
+            title={<span style={{ color: "#484848" }}>1 year</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
