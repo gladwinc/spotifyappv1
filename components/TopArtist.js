@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Tab, Tabs, Image } from "react-bootstrap";
-import { ArrowDownCircleFill } from "react-bootstrap-icons";
+import { Tab, Tabs, Image, Toast } from "react-bootstrap";
+import { ArrowDownCircleFill, Copy } from "react-bootstrap-icons";
 
 const TOP_ARTISTS_ENDPOINT = "https://api.spotify.com/v1/me/top/artists";
 
@@ -9,6 +9,8 @@ const TopArtist = ({ token }) => {
   const [data, setData] = useState([]);
   const [activeTimeRange, setActiveTimeRange] = useState("short_term");
   const [offset, setOffset] = useState(0);
+  const [copyText, setCopyText] = useState(""); // State to hold text to be copied
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     fetchTopArtists();
@@ -26,11 +28,20 @@ const TopArtist = ({ token }) => {
       );
       if (offset === 0) {
         setData(response.data);
+        // Set the copy text for the full list
+        setCopyText(response.data.items.map((item) => item.name).join("\n"));
       } else {
         setData((prevData) => ({
           ...prevData,
           items: [...prevData.items, ...response.data.items],
         }));
+        // Append new items to the copy text
+        setCopyText(
+          (prevText) =>
+            prevText +
+            "\n" +
+            response.data.items.map((item) => item.name).join("\n")
+        );
       }
     } catch (error) {
       console.error("Error fetching top artists: ", error);
@@ -44,6 +55,11 @@ const TopArtist = ({ token }) => {
 
   const loadMore = () => {
     setOffset((prevOffset) => prevOffset + 5);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(copyText);
+    setShowToast(true); // Show toast message after copying
   };
 
   const renderItems = () => {
@@ -80,10 +96,17 @@ const TopArtist = ({ token }) => {
           title={<span style={{ color: "black" }}>4 weeks</span>}>
           {renderItems()}
           {data?.next && (
-            <div
-              onClick={loadMore}
-              style={{ cursor: "pointer", color: "#1DB954" }}>
-              <ArrowDownCircleFill size={30} />
+            <div className="d-flex align-items-center justify-content-between">
+              <div
+                onClick={loadMore}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <ArrowDownCircleFill size={30} />
+              </div>
+              <div
+                onClick={handleCopy}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <Copy size={20} />
+              </div>
             </div>
           )}
         </Tab>
@@ -92,10 +115,17 @@ const TopArtist = ({ token }) => {
           title={<span style={{ color: "black" }}>6 months</span>}>
           {renderItems()}
           {data?.next && (
-            <div
-              onClick={loadMore}
-              style={{ cursor: "pointer", color: "#1DB954" }}>
-              <ArrowDownCircleFill size={30} />
+            <div className="d-flex align-items-center justify-content-between">
+              <div
+                onClick={loadMore}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <ArrowDownCircleFill size={30} />
+              </div>
+              <div
+                onClick={handleCopy}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <Copy size={20} />
+              </div>
             </div>
           )}
         </Tab>
@@ -104,14 +134,38 @@ const TopArtist = ({ token }) => {
           title={<span style={{ color: "black" }}>1 year</span>}>
           {renderItems()}
           {data?.next && (
-            <div
-              onClick={loadMore}
-              style={{ cursor: "pointer", color: "#1DB954" }}>
-              <ArrowDownCircleFill size={30} />
+            <div className="d-flex align-items-center justify-content-between">
+              <div
+                onClick={loadMore}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <ArrowDownCircleFill size={30} />
+              </div>
+              <div
+                onClick={handleCopy}
+                style={{ cursor: "pointer", color: "#1DB954" }}>
+                <Copy size={20} />
+              </div>
             </div>
           )}
         </Tab>
       </Tabs>
+      <Toast
+        onClose={() => setShowToast(false)}
+        show={showToast}
+        delay={1700} // 3 seconds
+        autohide
+        style={{
+          position: "fixed",
+          top: "67px",
+          right: "20px",
+          zIndex: 9999,
+        }}>
+        <Toast.Header>
+          <strong className="me-auto">Message</strong>
+          <small>Now</small>
+        </Toast.Header>
+        <Toast.Body>{`Clipboard updated with ${data?.items?.length} artists`}</Toast.Body>
+      </Toast>
     </>
   );
 };
