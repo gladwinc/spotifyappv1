@@ -51,7 +51,7 @@ const Dashboard = () => {
             <Card
               style={{
                 marginBottom: "20px",
-                maxHeight: "594px",
+                maxHeight: "610px",
                 overflowY: "auto",
               }}>
               <Card.Header

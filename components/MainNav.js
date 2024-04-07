@@ -1,5 +1,14 @@
 import { useRouter } from "next/router";
-import { Navbar, Nav, Image, Container, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Image,
+  Container,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
+import { PersonFillAdd, PersonFillDash } from "react-bootstrap-icons"; // Import the icons
 import {
   CLIENT_ID,
   AUTHORIZE_URL,
@@ -41,7 +50,6 @@ const MainNav = () => {
   return (
     <Navbar
       className="fixed-top navbar-dark"
-      expand="lg"
       style={{ backgroundColor: "#1DB954" }}>
       <Container>
         <Navbar.Brand>
@@ -53,31 +61,27 @@ const MainNav = () => {
             alt="spotify"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link
-              active={router.pathname === "/dashboard"}
-              href="/dashboard">
-              Dashboard
-            </Nav.Link>
-            <Nav.Link
-              className="mr-lg-4"
-              active={router.pathname === "/about"}
-              href="/about">
-              About
-            </Nav.Link>
-          </Nav>
-          {isLoggedIn ? (
-            <Button variant="outline-light" onClick={handleLogout}>
-              Logout
-            </Button>
-          ) : (
-            <Button variant="outline-light" onClick={handleNavbarLogin}>
-              Login
-            </Button>
-          )}
-        </Navbar.Collapse>
+        <Nav className="me-auto">
+          <Nav.Link active={router.pathname === "/dashboard"} href="/dashboard">
+            Dashboard
+          </Nav.Link>
+          <Nav.Link active={router.pathname === "/about"} href="/about">
+            About
+          </Nav.Link>
+        </Nav>
+        {!isLoggedIn ? (
+          <PersonFillAdd
+            onClick={handleNavbarLogin}
+            style={{ color: "#FAF9F6", cursor: "pointer" }}
+            size={23}
+          />
+        ) : (
+          <PersonFillDash
+            onClick={handleLogout}
+            style={{ color: "#FAF9F6", cursor: "pointer" }}
+            size={23}
+          />
+        )}
       </Container>
     </Navbar>
   );
