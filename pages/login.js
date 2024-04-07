@@ -1,15 +1,14 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-
+import {
+  CLIENT_ID,
+  AUTHORIZE_URL,
+  REDIRECT_URI,
+  SCOPES,
+} from "@/constants/constants";
 import { getTokenFromUrl } from "@/utils/api";
 import { useRouter } from "next/router"; // Import useRouter from Next.js
-
-const CLIENT_ID = "f93eafeebc55462282df6aae7a883874";
-const AUTHORIZE_URL = "https://accounts.spotify.com/authorize";
-//const REDIRECT_URI = "https://main--spotifyappv1.netlify.app/login/";
-const REDIRECT_URI = "http://localhost:3000/login/";
-const SCOPES = ["user-top-read"];
 
 const Login = () => {
   const router = useRouter(); // Initialize useRouter hook

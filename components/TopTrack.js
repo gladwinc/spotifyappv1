@@ -92,7 +92,7 @@ const TopTrack = ({ token }) => {
           </div>
           <p className="text-secondary">
             <Link href="/login" legacyBehavior>
-              <a>Login </a>
+              <a style={{ textDecoration: "none" }}>Login </a>
             </Link>
             to view top tracks.
           </p>

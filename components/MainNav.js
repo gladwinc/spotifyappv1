@@ -1,8 +1,27 @@
 import { useRouter } from "next/router";
 import { Navbar, Nav, Image, Container, Button } from "react-bootstrap";
+import {
+  CLIENT_ID,
+  AUTHORIZE_URL,
+  REDIRECT_URI,
+  SCOPES,
+} from "@/constants/constants";
 
 const MainNav = () => {
   const router = useRouter();
+
+  const handleNavbarLogin = () => {
+    const url =
+      `${AUTHORIZE_URL}?` +
+      `client_id=${encodeURIComponent(CLIENT_ID)}&` +
+      `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
+      `scope=${encodeURIComponent(SCOPES.join(" "))}&` +
+      `response_type=token&` +
+      `show_dialog=true`;
+
+    window.location = url;
+  };
+
   let isLoggedIn = false; // Initialize isLoggedIn as false by default
 
   if (typeof window !== "undefined") {
@@ -17,11 +36,6 @@ const MainNav = () => {
       // Redirect user to the login page
       router.push("/login");
     }
-  };
-
-  const handleLogin = () => {
-    // Redirect user to the login page
-    router.push("/login");
   };
 
   return (
@@ -54,9 +68,13 @@ const MainNav = () => {
               About
             </Nav.Link>
           </Nav>
-          {isLoggedIn && (
+          {isLoggedIn ? (
             <Button variant="outline-light" onClick={handleLogout}>
               Logout
+            </Button>
+          ) : (
+            <Button variant="outline-light" onClick={handleNavbarLogin}>
+              Login
             </Button>
           )}
         </Navbar.Collapse>

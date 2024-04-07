@@ -89,8 +89,8 @@ const TopArtist = ({ token }) => {
             <p className="mb-0 text-muted">Artist unavailable.</p>
           </div>
           <p className="text-secondary">
-            <Link href="/login" legacyBehavior>
-              <a>Login </a>
+            <Link href="/login " legacyBehavior>
+              <a style={{ textDecoration: "none" }}>Login </a>
             </Link>
             to view top artists.
           </p>
