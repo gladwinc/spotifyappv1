@@ -90,7 +90,7 @@ const TopTrack = ({ token }) => {
             <PatchQuestionFill size={50} style={{ marginRight: "40px" }} />
             <p className="mb-0">Track unavailable.</p>
           </div>
-          <p className="text-secondary">
+          <p>
             <Link href="/login" legacyBehavior>
               <a style={{ textDecoration: "none", color: "#1DB954" }}>Login </a>
             </Link>
@@ -134,7 +134,7 @@ const TopTrack = ({ token }) => {
           className="mb-3">
           <Tab
             eventKey="short_term"
-            title={<span style={{ color: "#484848" }}>4 weeks</span>}>
+            title={<span style={{ color: "#212529" }}>4 weeks</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
@@ -153,7 +153,7 @@ const TopTrack = ({ token }) => {
           </Tab>
           <Tab
             eventKey="medium_term"
-            title={<span style={{ color: "#484848" }}>6 months</span>}>
+            title={<span style={{ color: "#212529" }}>6 months</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
@@ -172,7 +172,7 @@ const TopTrack = ({ token }) => {
           </Tab>
           <Tab
             eventKey="long_term"
-            title={<span style={{ color: "#484848" }}>1 year</span>}>
+            title={<span style={{ color: "#212529" }}>1 year</span>}>
             {renderItems()}
             {data?.next && (
               <div className="d-flex align-items-center justify-content-between">
