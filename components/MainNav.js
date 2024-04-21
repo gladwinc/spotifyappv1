@@ -65,8 +65,8 @@ const MainNav = () => {
           <Nav.Link active={router.pathname === "/dashboard"} href="/dashboard">
             Dashboard
           </Nav.Link>
-          <Nav.Link active={router.pathname === "/about"} href="/about">
-            About
+          <Nav.Link active={router.pathname === "/demo"} href="/demo">
+            Demo
           </Nav.Link>
         </Nav>
         {!isLoggedIn ? (
