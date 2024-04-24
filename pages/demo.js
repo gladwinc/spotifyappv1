@@ -26,14 +26,14 @@ const Demo = () => {
             style={{ backgroundColor: "#1DB954", borderColor: "#1DB954" }}
             variant="primary"
             onClick={() => handleDemoChange("web")}
-            className={selectedDemo === "web" ? "active" : ""}>
+            className={`mr-2 ${selectedDemo === "web" ? "active" : ""}`}>
             web
           </Button>{" "}
           <Button
             style={{ backgroundColor: "#1DB954", borderColor: "#1DB954" }}
             variant="primary"
             onClick={() => handleDemoChange("mobile")}
-            className={selectedDemo === "mobile" ? "active" : ""}>
+            className={`mr-2 ${selectedDemo === "mobile" ? "active" : ""}`}>
             mobile
           </Button>
         </div>

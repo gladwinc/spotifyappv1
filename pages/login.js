@@ -8,10 +8,10 @@ import {
   SCOPES,
 } from "@/constants/constants";
 import { getTokenFromUrl } from "@/utils/api";
-import { useRouter } from "next/router"; // Import useRouter from Next.js
+import { useRouter } from "next/router";
 
 const Login = () => {
-  const router = useRouter(); // Initialize useRouter hook
+  const router = useRouter();
 
   useEffect(() => {
     const fetchToken = () => {
