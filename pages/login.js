@@ -1,15 +1,11 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import {
-  CLIENT_ID,
-  AUTHORIZE_URL,
-  REDIRECT_URI,
-  SCOPES,
-} from "@/constants/constants";
+import { AUTHORIZE_URL, REDIRECT_URI, SCOPES } from "@/constants/constants";
 import { getTokenFromUrl } from "@/utils/api";
 import { useRouter } from "next/router";
 
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 const Login = () => {
   const router = useRouter();
 

@@ -9,13 +9,9 @@ import {
   Col,
 } from "react-bootstrap";
 import { PersonFillAdd, PersonFillDash } from "react-bootstrap-icons"; // Import the icons
-import {
-  CLIENT_ID,
-  AUTHORIZE_URL,
-  REDIRECT_URI,
-  SCOPES,
-} from "@/constants/constants";
+import { AUTHORIZE_URL, REDIRECT_URI, SCOPES } from "@/constants/constants";
 
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 const MainNav = () => {
   const router = useRouter();
 
